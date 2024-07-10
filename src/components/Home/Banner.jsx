@@ -40,12 +40,26 @@ const Banner = ({ video }) => {
         <div className="relative flex h-full w-full items-center justify-between max-md:hidden">
           <div className="aspect-[5/4] h-full w-[50%] p-10">
             <div className="flex h-full w-full flex-col justify-center">
+              <p className="mb-1.5 text-muted-foreground first-letter:uppercase">
+                {video.categoria}
+              </p>
               <h1 className="text-lg font-bold sm:text-2xl lg:text-4xl 3xl:text-5xl">
                 {video.titulo}
               </h1>
               <p className="mt-3 line-clamp-3 max-w-screen-sm text-sm max-md:hidden 3xl:text-lg">
                 {video.descripcion}
               </p>
+
+              <div className="mt-3">
+                <Link
+                  to={video.link}
+                  rel="nopener noreferrer"
+                  target="_blank"
+                  className="mt-3 inline-block rounded-lg border px-4 py-1 font-medium transition duration-200 hover:bg-border hover:text-foreground"
+                >
+                  Ver ahora
+                </Link>
+              </div>
             </div>
           </div>
           <div className="relative aspect-[5/4] w-[50%] overflow-hidden">
