@@ -2,14 +2,14 @@ import { navbarItems } from "../../constants/navbar-items";
 
 const Navbar = () => {
   return (
-    <nav className="flex space-x-2 items-center">
+    <nav className="flex items-center space-x-2">
       {navbarItems.map((item, index) => (
         <button
           key={index}
-          className="py-1 px-4 sm:py-2 rounded-lg border text-sm hover:bg-muted transition duration-200"
+          className="rounded-lg border px-4 py-1 text-sm transition duration-200 hover:bg-muted sm:py-2"
         >
-          <p className="sm:hidden">+</p>
-          <p className="max-sm:hidden">{item.label}</p>
+          <p className="md:hidden">+</p>
+          <p className="max-md:hidden">{item.label}</p>
         </button>
       ))}
     </nav>

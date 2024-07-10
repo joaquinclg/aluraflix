@@ -4,17 +4,34 @@
 import { useEffect, useState } from "react";
 
 import Grid from "../../components/VideoGrid/Grid";
+import Banner from "../../components/Home/Banner";
 
 function HomePage() {
   const [categorias, setCategorias] = useState([]);
+  const [latestVideo, setLatestVideo] = useState({});
 
   useEffect(() => {
     const fetchCategorias = async () => {
       const response = await fetch(
-        "http://localhost:3000/categorias?_sort=nombre,id"
+        `${import.meta.env.VITE_DB_URL}/categorias?_sort=nombre,id`,
       );
       const data = await response.json();
       setCategorias(data);
+    };
+
+    const fetchLatestVideo = async () => {
+      const videoResponse = await fetch(
+        `${import.meta.env.VITE_DB_URL}/videos?_sort=-id&_limit=1`,
+      );
+      const video = await videoResponse.json();
+
+      const categoriaResponse = await fetch(
+        `${import.meta.env.VITE_DB_URL}/categorias/${video[0].categoria}`,
+      );
+
+      const categoria = await categoriaResponse.json();
+
+      setLatestVideo({ ...video[0], categoria: categoria.nombre });
     };
 
     try {
@@ -22,11 +39,21 @@ function HomePage() {
     } catch (error) {
       console.error("Error al obtener las categorias", error);
     }
+
+    try {
+      fetchLatestVideo();
+    } catch (error) {
+      console.error("Error al obtener el último video", error);
+    }
   }, []);
 
   return (
     <>
-      <div className="px-4">
+      {/* Banner */}
+      <Banner video={latestVideo} />
+
+      {/* Categorias */}
+      <div className="mt-10 px-4">
         {categorias?.map((categoria) => (
           <Grid key={categoria.id} categoria={categoria} />
         ))}

@@ -5,16 +5,10 @@ import Header from "./components/Header/Header";
 function Layout() {
   return (
     <>
-      <div className="min-h-dvh">
+      <div className="mx-auto min-h-dvh max-w-screen-3xl">
         <Header />
         <main className="h-full bg-background text-foreground">
-          {/* <Cabecera/> */}
-          {/* <FavoritoProvider> */}
-          {/* <Container> */}
           <Outlet />
-          {/* </Container> */}
-          {/* </FavoritoProvider> */}
-          {/* <Pie/> */}
         </main>
       </div>
     </>

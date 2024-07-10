@@ -5,7 +5,7 @@
       "titulo": "Bad Boys: Ride or Die (2024)",
       "imagen": "https://image.tmdb.org/t/p/original/xHEOGkTom8b2UMq1rsDVqxUZ7Ce.jpg",
       "descripcion": "Tras escuchar falsas acusaciones sobre su excapitán y mentor Mike y Marcus deciden investigar el asunto incluso volverse los más buscados de ser necesarios",
-      "video": "https://youtu.be/hRFY_Fesa9Q",
+      "link": "https://youtu.be/hRFY_Fesa9Q",
       "categoria": 1
     },
     {
@@ -13,7 +13,7 @@
       "titulo": "Furiosa: De la Saga Mad Max (2024)",
       "imagen": "https://image.tmdb.org/t/p/original/wNAhuOZ3Zf84jCIlrcI6JhgmY5q.jpg",
       "descripcion": "Mientras el mundo se derrumba, la joven Furiosa es secuestrada del Lugar Verde de Muchas Madres y cae en manos de una Horda de Motociclistas liderada por el Señor de la Guerra Dementus. Recorriendo la tierra baldía llega a la Ciudadela, presidida por Inmortan Joe. Mientras los dos tiranos luchan por el dominio de la zona, Furiosa deberá sobrevivir a muchas pruebas buscando volver a casa",
-      "video": "https://youtu.be/2OEGx_yIS6M",
+      "link": "https://youtu.be/2OEGx_yIS6M",
       "categoria": 1
     },
     {
@@ -21,30 +21,26 @@
       "titulo": "El Padrino (1972)",
       "imagen": "https://image.tmdb.org/t/p/original/rSPw7tgCH9c6NqICZef4kZjFOQ5.jpg",
       "descripcion": "Don Vito Corleone es el respetado y temido jefe de una de las cinco familias de la mafia de Nueva York. Tiene cuatro hijos: una chica, Connie, y tres varones: el impulsivo Sonny, el pusilánime Freddie y Michael, que no quiere saber nada de los negocios de su padre. Cuando Corleone, siempre aconsejado por su consejero Tom Hagen, se niega a intervenir en el negocio de las drogas, el jefe de otra banda ordena su asesinato. Empieza entonces una violenta y cruenta guerra entre las familias mafiosas.",
-      "video": "https://youtu.be/2QUacU0I4yU",
+      "link": "https://youtu.be/2QUacU0I4yU",
       "categoria": 2
     }
   ],
   "categorias": [
     {
       "id": 1,
-      "nombre": "accion",
-      "descripcion": "Peliculas de accion"
+      "nombre": "accion"
     },
     {
       "id": 2,
-      "nombre": "drama",
-      "descripcion": "Peliculas de accion"
+      "nombre": "drama"
     },
     {
       "id": 3,
-      "nombre": "comedia",
-      "descripcion": "Peliculas de accion"
+      "nombre": "comedia"
     },
     {
       "id": 4,
-      "nombre": "terror",
-      "descripcion": "Peliculas de accion"
+      "nombre": "terror"
     }
   ]
 }
