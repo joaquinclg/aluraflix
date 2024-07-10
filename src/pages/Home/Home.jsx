@@ -53,7 +53,7 @@ function HomePage() {
       <Banner video={latestVideo} />
 
       {/* Categorias */}
-      <div className="mt-10 px-4">
+      <div className="mb-10 mt-10 px-4">
         {categorias?.map((categoria) => (
           <Grid key={categoria.id} categoria={categoria} />
         ))}

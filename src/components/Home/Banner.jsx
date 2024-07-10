@@ -28,6 +28,7 @@ const Banner = ({ video }) => {
               <Link
                 to={video.link}
                 rel="nopener noreferrer"
+                target="_blank"
                 className="mt-3 inline-block rounded-lg border px-4 py-1 font-medium transition duration-200 hover:bg-border hover:text-foreground"
               >
                 Ver ahora
