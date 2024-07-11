@@ -10,9 +10,6 @@ function AppRoutes() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />}></Route>
           <Route path="*" element={<NotFound />}></Route>
-          {/* <Route path="favoritos" element={<Favoritos />}></Route>
-          <Route path=":id" element={<Player />}></Route>
-          <Route path="*" element={<NotFound />}></Route> */}
         </Route>
       </Routes>
     </BrowserRouter>
