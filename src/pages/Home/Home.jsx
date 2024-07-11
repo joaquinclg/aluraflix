@@ -1,5 +1,4 @@
 // https://www.themoviedb.org/movie/top-rated?language=es
-// https://github.com/alura-es-cursos/alura-cinema/tree/aula5/src/pages
 
 import { useEffect, useState } from "react";
 

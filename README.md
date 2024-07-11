@@ -1,8 +1,12 @@
-# React + Vite
+# Proyecto AluraFlix de Oracle ONE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Pasos para ejecutar el proyecto
 
-Currently, two official plugins are available:
+1. Clonar el repositorio
+2. Abrir el proyecto en Visual Studio Code
+3. Instalar las dependencias con `npm install`
+4. Ejecutar el proyecto con `npm start` o `npm run dev`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Variables de entorno
+
+`VITE_DB_URL=URL_DE_CONEXION_A_BASE_DE_DATOS`. Por ejemplo: `VITE_DB_URL=http://localhost:3000`
