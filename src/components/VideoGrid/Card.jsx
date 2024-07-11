@@ -5,6 +5,18 @@ import { useEffect, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 
 const Card = ({ video }) => {
+  const onDelete = async () => {
+    try {
+      await fetch(`${import.meta.env.VITE_DB_URL}/videos/${video.id}`, {
+        method: "DELETE",
+      });
+
+      window.location.reload(false);
+    } catch (error) {
+      console.log("Error al eliminar el video", error);
+    }
+  };
+
   return (
     <li
       key={video.id}
@@ -30,7 +42,7 @@ const Card = ({ video }) => {
             <MdEdit />
           </button>
           <button className="rounded-md bg-muted bg-opacity-50 p-2 text-background transition-all duration-200 hover:bg-opacity-100 hover:text-foreground">
-            <MdDelete />
+            <MdDelete onClick={onDelete} />
           </button>
         </div>
       </div>

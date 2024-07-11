@@ -15,7 +15,7 @@ const NuevaPeliculaForm = () => {
   const { closeModal } = useFormModal();
 
   useEffect(() => {
-    fetch("http://localhost:3000/categorias")
+    fetch(`${import.meta.env.VITE_DB_URL}/categorias`)
       .then((res) => res.json())
       .then((data) => setCategorias(data))
       .catch((err) => console.error(err));
@@ -37,7 +37,7 @@ const NuevaPeliculaForm = () => {
     };
 
     try {
-      const response = fetch("http://localhost:3000/videos", {
+      const response = fetch(`${import.meta.env.VITE_DB_URL}/videos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const NuevaPeliculaForm = () => {
             required
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
-            className="w-full rounded-md bg-muted px-2 py-2 text-foreground"
+            className="w-full rounded-sm bg-muted px-2 py-2 text-foreground"
           >
             <option value="" disabled defaultValue="" hidden>
               Selecciona una categoria

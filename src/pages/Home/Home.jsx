@@ -14,7 +14,7 @@ function HomePage() {
   const [categorias, setCategorias] = useState([]);
   const [latestVideo, setLatestVideo] = useState({});
 
-  const { isOpen, closeModal } = useFormModal();
+  const { isOpen } = useFormModal();
 
   useEffect(() => {
     const fetchCategorias = async () => {
