@@ -14,7 +14,7 @@ function HomePage() {
   const [categorias, setCategorias] = useState([]);
   const [latestVideo, setLatestVideo] = useState({});
 
-  const { isOpen } = useFormModal();
+  const { isOpen, closeModal } = useFormModal();
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -58,8 +58,10 @@ function HomePage() {
       {/* Formulario */}
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex h-dvh w-full items-center justify-center bg-background p-10 text-foreground">
-          <NuevaPeliculaForm />
+        <div className="fixed inset-0 z-50 flex h-dvh w-full items-center justify-center bg-black/80">
+          <div className="rounded-md bg-popover p-10">
+            <NuevaPeliculaForm />
+          </div>
         </div>
       )}
 
