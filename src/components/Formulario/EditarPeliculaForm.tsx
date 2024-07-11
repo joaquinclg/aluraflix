@@ -57,7 +57,7 @@ const EditPeliculaForm = () => {
   };
 
   return (
-    <>
+    <div>
       <h2 className="mb-8 text-center text-lg font-semibold">
         Editar pelicula
       </h2>
@@ -147,7 +147,7 @@ const EditPeliculaForm = () => {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

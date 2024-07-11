@@ -59,7 +59,7 @@ const NuevaPeliculaForm = () => {
   };
 
   return (
-    <>
+    <div>
       <h2 className="mb-8 text-center text-lg font-semibold">
         Agregar nueva pelicula
       </h2>
@@ -135,7 +135,7 @@ const NuevaPeliculaForm = () => {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

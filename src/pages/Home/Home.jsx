@@ -61,7 +61,7 @@ function HomePage() {
 
       {modalCreate.isOpen && (
         <div className="fixed inset-0 z-50 flex h-dvh w-full items-center justify-center bg-black/80 py-5">
-          <div className="relative h-full overflow-y-auto rounded-md bg-popover p-10">
+          <div className="relative flex h-full items-center overflow-y-auto rounded-md bg-popover p-10 px-20">
             <NuevaPeliculaForm />
           </div>
         </div>
@@ -69,7 +69,7 @@ function HomePage() {
 
       {modalEdit.isOpen && (
         <div className="fixed inset-0 z-50 flex h-dvh w-full items-center justify-center bg-black/80 py-5">
-          <div className="relative h-full overflow-y-auto rounded-md bg-popover p-10">
+          <div className="relative flex h-full items-center overflow-y-auto rounded-md bg-popover p-10 px-20">
             <EditPeliculaForm />
           </div>
         </div>
