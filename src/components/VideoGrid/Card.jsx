@@ -1,16 +1,39 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { MdDelete, MdEdit } from "react-icons/md";
 
 const Card = ({ video }) => {
   return (
     <li
       key={video.id}
-      className="relative aspect-video rounded-lg overflow-hidden w-48 sm:w-64 md:w-72 lg:w-80 xl:w-96 2xl:w-108 bg-slate-700"
+      className="2xl:w-108 group relative aspect-video w-60 overflow-hidden rounded-lg bg-slate-700 sm:w-72 lg:w-80 xl:w-96"
     >
-      <img
-        className="absolute inset-0 w-full h-full object-cover object-center bg-slate-700"
-        src={video.imagen}
-        alt={video.titulo}
+      <div>
+        <img
+          className="absolute inset-0 h-full w-full bg-slate-700 object-cover object-center transition duration-[400ms] ease-out group-hover:scale-110"
+          src={video.imagen}
+          alt={video.titulo}
+        />
+      </div>
+      <Link
+        to={video.link}
+        className="absolute inset-0 h-full w-full"
+        target="_blank"
+        rel="noopener noreferrer"
       />
+
+      <div className="absolute top-0 hidden w-full p-2 group-hover:block">
+        <div className="flex items-center justify-end gap-2">
+          <button className="rounded-md bg-muted bg-opacity-50 p-2 text-background transition-all duration-200 hover:bg-opacity-100 hover:text-foreground">
+            <MdEdit />
+          </button>
+          <button className="rounded-md bg-muted bg-opacity-50 p-2 text-background transition-all duration-200 hover:bg-opacity-100 hover:text-foreground">
+            <MdDelete />
+          </button>
+        </div>
+      </div>
     </li>
   );
 };
@@ -21,7 +44,7 @@ Card.propTypes = {
     titulo: PropTypes.string.isRequired,
     imagen: PropTypes.string.isRequired,
     descripcion: PropTypes.string.isRequired,
-    video: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
     categoria: PropTypes.number.isRequired,
   }).isRequired,
 };

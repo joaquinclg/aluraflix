@@ -6,9 +6,15 @@ import { useEffect, useState } from "react";
 import Grid from "../../components/VideoGrid/Grid";
 import Banner from "../../components/Home/Banner";
 
+import NuevaPeliculaForm from "../../components/Formulario/NuevaPeliculaForm";
+
+import useFormModal from "../../hooks/useFormModal";
+
 function HomePage() {
   const [categorias, setCategorias] = useState([]);
   const [latestVideo, setLatestVideo] = useState({});
+
+  const { isOpen } = useFormModal();
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -49,11 +55,19 @@ function HomePage() {
 
   return (
     <>
+      {/* Formulario */}
+
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex h-dvh w-full items-center justify-center bg-background p-10 text-foreground">
+          <NuevaPeliculaForm />
+        </div>
+      )}
+
       {/* Banner */}
       <Banner video={latestVideo} />
 
       {/* Categorias */}
-      <div className="mb-10 mt-10 px-4">
+      <div className="mb-10 mt-10 space-y-5 px-4">
         {categorias?.map((categoria) => (
           <Grid key={categoria.id} categoria={categoria} />
         ))}

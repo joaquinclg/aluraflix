@@ -66,7 +66,7 @@ const Banner = ({ video }) => {
             <img
               src={video.imagen}
               alt={video.titulo}
-              className="absolute inset-0 h-full w-full object-cover object-left"
+              className="absolute inset-0 h-full w-full object-cover object-center"
             />
             <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-card-foreground from-10% via-transparent via-60% to-transparent"></div>
           </div>

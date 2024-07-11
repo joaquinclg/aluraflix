@@ -27,11 +27,11 @@ const Grid = ({ categoria }) => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <h2 className="text-medium text-lg capitalize">{categoria.nombre}</h2>
       <div className="relative w-full overflow-hidden whitespace-nowrap">
         <div className="videos-grid-wrapper h-full w-full overflow-x-auto">
-          <ul className="mb-2 flex w-max items-center space-x-4">
+          <ul className="mb-2 flex w-max items-center space-x-2">
             {videos.map((video) => (
               <Card key={video.id} video={video} />
             ))}
@@ -44,7 +44,7 @@ const Grid = ({ categoria }) => {
 
 Grid.propTypes = {
   categoria: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     nombre: PropTypes.string.isRequired,
   }).isRequired,
 };
