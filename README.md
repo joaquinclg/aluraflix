@@ -6,6 +6,7 @@
 2. Abrir el proyecto en Visual Studio Code
 3. Instalar las dependencias con `npm install`
 4. Ejecutar el proyecto con `npm start` o `npm run dev`
+5. Ejecutar la base de datos con `npx json-server db.json`
 
 ## Variables de entorno
 
