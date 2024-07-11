@@ -64,10 +64,7 @@ const NuevaPeliculaForm = () => {
         Agregar nueva pelicula
       </h2>
 
-      <form
-        className="grid gap-4 [&>input]:bg-muted [&>textarea]:bg-muted"
-        onSubmit={handleSubmit}
-      >
+      <form className="grid gap-4" onSubmit={handleSubmit}>
         <div className="grid gap-2">
           <label>Titulo</label>
           <Input
@@ -92,7 +89,7 @@ const NuevaPeliculaForm = () => {
             required
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
-            className="w-full rounded-sm bg-muted px-2 py-2 text-foreground"
+            className="w-full rounded-sm bg-muted px-2 py-2 capitalize text-foreground"
           >
             <option value="" disabled defaultValue="" hidden>
               Selecciona una categoria

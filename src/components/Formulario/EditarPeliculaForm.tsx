@@ -62,10 +62,7 @@ const EditPeliculaForm = () => {
         Editar pelicula
       </h2>
 
-      <form
-        className="grid gap-4 [&>input]:bg-muted [&>textarea]:bg-muted"
-        onSubmit={handleSubmit}
-      >
+      <form className="grid gap-4" onSubmit={handleSubmit}>
         <div className="grid gap-2">
           <label>Titulo</label>
           <Input
@@ -93,7 +90,7 @@ const EditPeliculaForm = () => {
           <select
             required
             value={formData.categoria}
-            className="w-full rounded-sm bg-muted px-2 py-2 text-foreground"
+            className="w-full rounded-sm bg-muted px-2 py-2 capitalize text-foreground"
             onChange={(e) =>
               setFormData({ ...formData, categoria: e.target.value })
             }
