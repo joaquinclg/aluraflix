@@ -9,12 +9,15 @@ import Banner from "../../components/Home/Banner";
 import NuevaPeliculaForm from "../../components/Formulario/NuevaPeliculaForm";
 
 import useFormModal from "../../hooks/useFormModal";
+import useEditFormModal from "../../hooks/useEditFormModal";
+import EditPeliculaForm from "../../components/Formulario/EditarPeliculaForm";
 
 function HomePage() {
   const [categorias, setCategorias] = useState([]);
   const [latestVideo, setLatestVideo] = useState({});
 
-  const { isOpen } = useFormModal();
+  const modalCreate = useFormModal();
+  const modalEdit = useEditFormModal();
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -57,10 +60,18 @@ function HomePage() {
     <>
       {/* Formulario */}
 
-      {isOpen && (
+      {modalCreate.isOpen && (
         <div className="fixed inset-0 z-50 flex h-dvh w-full items-center justify-center bg-black/80">
           <div className="rounded-md bg-popover p-10">
             <NuevaPeliculaForm />
+          </div>
+        </div>
+      )}
+
+      {modalEdit.isOpen && (
+        <div className="fixed inset-0 z-50 flex h-dvh w-full items-center justify-center bg-black/80">
+          <div className="rounded-md bg-popover p-10">
+            <EditPeliculaForm />
           </div>
         </div>
       )}

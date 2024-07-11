@@ -1,57 +1,55 @@
 import { useState, useEffect } from "react";
-import useFormModal from "../../hooks/useFormModal";
-import Input from "../Formulario/Input";
-import Textarea from "../Formulario/Textarea";
+import useEditFormModal from "../../hooks/useEditFormModal";
+import Input from "./Input";
+import Textarea from "./Textarea";
 
-const NuevaPeliculaForm = () => {
-  const [titulo, setTitulo] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [imagen, setImagen] = useState("");
-  const [link, setLink] = useState("");
+interface Categoria {
+  id: string | number;
+  nombre: string;
+}
 
-  const [categorias, setCategorias] = useState([]);
+const EditPeliculaForm = () => {
+  const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-  const { closeModal } = useFormModal();
+  const [formData, setFormData] = useState({
+    titulo: "",
+    descripcion: "",
+    categoria: "",
+    imagen: "",
+    link: "",
+  });
+
+  const { closeModal, data: videoData } = useEditFormModal();
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_DB_URL}/categorias`)
       .then((res) => res.json())
       .then((data) => setCategorias(data))
       .catch((err) => console.error(err));
+
+    setFormData({
+      ...videoData,
+      titulo: videoData.titulo,
+      descripcion: videoData.descripcion,
+      categoria: videoData.categoria,
+      imagen: videoData.imagen,
+      link: videoData.link,
+    });
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!titulo || !descripcion || !categoria || !imagen || !link) {
-      return;
-    }
-
-    const nuevaPelicula = {
-      titulo,
-      descripcion,
-      categoria: parseInt(categoria),
-      imagen,
-      link,
-    };
-
     try {
-      const response = fetch(`${import.meta.env.VITE_DB_URL}/videos`, {
-        method: "POST",
+      await fetch(`${import.meta.env.VITE_DB_URL}/videos/${videoData.id}`, {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(nuevaPelicula),
+        body: JSON.stringify(formData),
       });
-
-      setTitulo("");
-      setDescripcion("");
-      setCategoria("");
-      setImagen("");
-      setLink("");
     } catch (error) {
-      console.error("Error al agregar la pelicula", error);
+      console.error("Error al editar la pelicula", error);
     } finally {
       closeModal();
       window.location.reload();
@@ -61,7 +59,7 @@ const NuevaPeliculaForm = () => {
   return (
     <>
       <h2 className="mb-8 text-center text-lg font-semibold">
-        Agregar nueva pelicula
+        Editar pelicula
       </h2>
 
       <form
@@ -73,33 +71,39 @@ const NuevaPeliculaForm = () => {
           <Input
             type="text"
             required
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
+            value={formData.titulo}
+            onChange={(e) =>
+              setFormData({ ...formData, titulo: e.target.value })
+            }
           />
         </div>
         <div className="grid gap-2">
           <label>Descripcion</label>
           <Textarea
             required
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
+            value={formData.descripcion}
             className="h-24 resize-none"
+            onChange={(e) =>
+              setFormData({ ...formData, descripcion: e.target.value })
+            }
           />
         </div>
         <div className="grid gap-2">
           <label>Categoria</label>
           <select
             required
-            value={categoria}
-            onChange={(e) => setCategoria(e.target.value)}
+            value={formData.categoria}
             className="w-full rounded-sm bg-muted px-2 py-2 text-foreground"
+            onChange={(e) =>
+              setFormData({ ...formData, categoria: e.target.value })
+            }
           >
             <option value="" disabled defaultValue="" hidden>
               Selecciona una categoria
             </option>
-            {categorias.map((categoria) => (
-              <option key={categoria.id} value={categoria.id}>
-                {categoria.nombre}
+            {categorias?.map((categoria) => (
+              <option key={categoria?.id} value={categoria?.id}>
+                {categoria?.nombre}
               </option>
             ))}
           </select>
@@ -109,8 +113,10 @@ const NuevaPeliculaForm = () => {
           <Input
             type="text"
             required
-            value={imagen}
-            onChange={(e) => setImagen(e.target.value)}
+            value={formData.imagen}
+            onChange={(e) =>
+              setFormData({ ...formData, imagen: e.target.value })
+            }
           />
         </div>
         <div className="grid gap-2">
@@ -118,15 +124,21 @@ const NuevaPeliculaForm = () => {
           <Input
             type="text"
             required
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
+            value={formData.link}
+            onChange={(e) => setFormData({ ...formData, link: e.target.value })}
           />
         </div>
         <div className="mt-5 flex w-full flex-col items-center justify-center gap-2 md:flex-row">
           <button
             type="submit"
             className="w-full rounded-md bg-foreground px-4 py-2 text-background disabled:opacity-50"
-            disabled={!titulo || !descripcion || !categoria || !imagen || !link}
+            disabled={
+              !formData.titulo ||
+              !formData.descripcion ||
+              !formData.categoria ||
+              !formData.imagen ||
+              !formData.link
+            }
           >
             Enviar
           </button>
@@ -142,4 +154,4 @@ const NuevaPeliculaForm = () => {
   );
 };
 
-export default NuevaPeliculaForm;
+export default EditPeliculaForm;

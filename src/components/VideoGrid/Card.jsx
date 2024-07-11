@@ -1,20 +1,28 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useEditFormModal from "../../hooks/useEditFormModal";
 
 import { MdDelete, MdEdit } from "react-icons/md";
 
 const Card = ({ video }) => {
+  const modalEdit = useEditFormModal();
+
   const onDelete = async () => {
     try {
       await fetch(`${import.meta.env.VITE_DB_URL}/videos/${video.id}`, {
         method: "DELETE",
       });
 
-      window.location.reload(false);
+      window.location.reload();
     } catch (error) {
       console.log("Error al eliminar el video", error);
     }
+  };
+
+  const onEdit = () => {
+    modalEdit.updateData(video);
+    modalEdit.openModal();
   };
 
   return (
@@ -39,7 +47,7 @@ const Card = ({ video }) => {
       <div className="absolute top-0 hidden w-full p-2 group-hover:block">
         <div className="flex items-center justify-end gap-2">
           <button className="rounded-md bg-muted bg-opacity-50 p-2 text-background transition-all duration-200 hover:bg-opacity-100 hover:text-foreground">
-            <MdEdit />
+            <MdEdit onClick={onEdit} />
           </button>
           <button className="rounded-md bg-muted bg-opacity-50 p-2 text-background transition-all duration-200 hover:bg-opacity-100 hover:text-foreground">
             <MdDelete onClick={onDelete} />

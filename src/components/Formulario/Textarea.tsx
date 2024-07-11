@@ -2,7 +2,7 @@ import { cn } from "../../lib/utils";
 
 interface TextareaProps {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   required?: boolean;
   className?: string;
 }

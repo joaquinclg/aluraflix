@@ -2,9 +2,9 @@ import { cn } from "../../lib/utils";
 
 interface InputProps {
   type: string;
-  placeholder: string;
+  placeholder?: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   className?: string;
 }
